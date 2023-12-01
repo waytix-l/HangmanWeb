@@ -3,32 +3,40 @@ package handlers
 import (
 	"bytes"
 	"fmt"
-	"html/template"
 	"net/http"
 	"path/filepath"
+	"text/template"
+
+	"github.com/waytix-l/HangmanWeb/config"
+	"github.com/waytix-l/HangmanWeb/hangman"
 )
 
+var h hangman.HangmanData
+
 func Home(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "home")
+	h.RandomWord()
+	println(h.Word)
+	renderTemplate(w, "home", hangman.HangmanData{Word: h.Word})
 }
 
 func Contact(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "contact")
+	renderTemplate(w, "contact", nil)
 }
 
 func About(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "about")
+	renderTemplate(w, "about", nil)
 }
 
-func renderTemplate(w http.ResponseWriter, tmplName string) {
-	templateCache, err := createTemplateCache()
-	fmt.Println(templateCache)
+var appConfig *config.Config
 
-	if err != nil {
-		panic(err)
-	}
+func CreateTemplates(app *config.Config) {
+	appConfig = app
+}
 
-	tmpl, ok := templateCache[tmplName + ".page.tmpl"]
+func renderTemplate(w http.ResponseWriter, tmplName string, data interface{}) {
+	templateCache := appConfig.TemplateCache
+
+	tmpl, ok := templateCache[tmplName+".page.html"]
 	fmt.Println(tmpl)
 
 	if !ok {
@@ -37,14 +45,14 @@ func renderTemplate(w http.ResponseWriter, tmplName string) {
 	}
 
 	buf := new(bytes.Buffer)
-	tmpl.Execute(buf, nil)
+	tmpl.Execute(buf, data)
 	buf.WriteTo(w)
 }
 
-func createTemplateCache() (map[string]*template.Template, error) {
+func CreateTemplateCache() (map[string]*template.Template, error) {
 	cache := map[string]*template.Template{}
 
-	pages, err := filepath.Glob("../../templates_HTML/*.page.tmpl")
+	pages, err := filepath.Glob("assets/templates_HTML/*.page.html")
 	fmt.Println(pages)
 
 	if err != nil {
@@ -55,14 +63,14 @@ func createTemplateCache() (map[string]*template.Template, error) {
 		name := filepath.Base(page)
 		tmpl := template.Must(template.ParseFiles(page))
 
-		layouts, err := filepath.Glob("../../templates_HTML/layouts/*.layout.tmpl")
+		layouts, err := filepath.Glob("assets/templates_HTML/layouts/*.layout.html")
 
 		if err != nil {
 			return cache, err
 		}
 
 		if len(layouts) > 0 {
-			tmpl.ParseGlob("../../templates_HTML/layouts/*.layout.tmpl")
+			tmpl.ParseGlob("assets/templates_HTML/layouts/*.layout.html")
 		}
 
 		cache[name] = tmpl
