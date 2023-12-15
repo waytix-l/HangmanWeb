@@ -1,17 +1,20 @@
 {{ template "base" . }}
 
 {{ define "content" }}
-    <h1>Home</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, veniam dolorem! Ducimus, illo officiis, error vero ipsum atque consequatur quod quidem, molestiae rerum ea eaque laboriosam ratione sequi iste dolores.</p>
+
+    <body>
+
+        <h1>Home</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, veniam dolorem! Ducimus, illo officiis, error vero ipsum atque consequatur quod quidem, molestiae rerum ea eaque laboriosam ratione sequi iste dolores.</p>
     
-    <p class="mot">{{.Word}}</p>
+        <p class="mot">{{.Word}}</p>
 
-    <video width="1080" height="1080" autoplay loop muted preload="auto" controls>
+        <div id="containerHoth"></div>
 
-        <source src="0000-0300.webm" type="video/webm"/>
+        <script type="module" src="assets/js/main.js">
+            import * as THREE from "https://cdn.skypack.dev/three";
+        </script>
 
-    </video>
-
-    
+    </body>
 
 {{ end }}

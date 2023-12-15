@@ -9,15 +9,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css" >
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.129.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.129.0/examples/jsm/"
+          }
+        }
+      </script>
 </head>
-
-<body>
     
-    {{ block "content" . }}
+{{ block "content" . }}
 
-    {{ end }}
-
-</body>
+{{ end }}
 
 </html>
 

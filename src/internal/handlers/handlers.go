@@ -27,6 +27,10 @@ func About(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "about", nil)
 }
 
+func Corruscant(w http.ResponseWriter, r *http.Request) {
+	
+}
+
 var appConfig *config.Config
 
 func CreateTemplates(app *config.Config) {

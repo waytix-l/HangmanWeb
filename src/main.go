@@ -27,6 +27,7 @@ func main() {
 	http.HandleFunc("/", handlers.Home)
 	http.HandleFunc("/contact", handlers.Contact)
 	http.HandleFunc("/about", handlers.About)
+	http.HandleFunc("corruscant", handlers.Corruscant)
 
 	fmt.Println("(htpp://localhost:8877) - Server started on port ", appConfig.Port)
 	http.ListenAndServe(appConfig.Port, nil)

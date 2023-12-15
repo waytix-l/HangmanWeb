@@ -4,6 +4,8 @@ body {
     background-image: url("../images/stars.png");
 }
 
+
+
 h1 {
     font-size: large;
     color: white;
@@ -15,4 +17,20 @@ p {
 
 .mot {
     color: white;
+}
+
+#containerHoth {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#containerHoth canvas {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
