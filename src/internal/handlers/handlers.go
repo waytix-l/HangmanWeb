@@ -27,9 +27,27 @@ func About(w http.ResponseWriter, r *http.Request) {
 	renderTemplate(w, "about", nil)
 }
 
-func Corruscant(w http.ResponseWriter, r *http.Request) {
-	
+func Hoth(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "hoth", nil)
 }
+
+func Corruscant(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "corruscant", nil)
+}
+
+func Korriban(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "korriban", nil)
+}
+
+func Mustafar(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "mustafar", nil)
+}
+
+
+func HothVideo(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, "hothVideo", nil)
+}
+
 
 var appConfig *config.Config
 

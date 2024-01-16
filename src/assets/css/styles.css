@@ -1,9 +1,9 @@
 
 
-body {
-    background-image: url("../images/stars.png");
+@font-face {
+    font-family: "star-wars";
+    src: url("../images/Aurebesh.otf");
 }
-
 
 
 h1 {
@@ -13,24 +13,82 @@ h1 {
 
 p {
     color: white;
+    z-index: 2;
 }
 
 .mot {
     color: white;
 }
 
-#containerHoth {
-    width: auto;
-    height: auto;
+#canvas {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 0px;
+    left: 0px;
 }
 
-#containerHoth canvas {
-    width: 200px;
-    height: 200px;
+.card {
     position: absolute;
-    top: 0;
-    left: 0;
+    z-index: 3;
+    color: transparent;
+    background-color: transparent;
+    width: 300px;
+    height: 400px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.card:hover {
+    opacity: 1;
+    scale: 110%;
+}
+
+#hoth.card {
+    top: 270px;
+    left: 45px;
+}
+
+#coruscant.card {
+    top: 270px;
+    left: 410px;
+}
+
+#korriban.card {
+    top: 270px;
+    left: 775px;
+}
+
+#mustafar.card {
+    top: 270px;
+    left: 1140px;
+}
+
+.test {
+    position: absolute;
+    top: 480px;
+    left: 317px;
+    letter-spacing: 5px;
+    z-index: 3;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-family: "star-wars";
+    opacity: 1;
+}
+
+
+#hothBody {
+    position: absolute;
+    background-image: url("../images/mountain-landscape.jpg");
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+}
+
+#hothVideoBody {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
