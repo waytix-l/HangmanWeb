@@ -26,13 +26,21 @@ func main() {
 
 	http.HandleFunc("/", handlers.Home)
 	http.HandleFunc("/contact", handlers.Contact)
-	http.HandleFunc("/about", handlers.About)
+
+	http.HandleFunc("/algerie1", handlers.Algerie1)
+	http.HandleFunc("/algerie2", handlers.Algerie2)
+	http.HandleFunc("/algerie3", handlers.Algerie3)
+	http.HandleFunc("/algerie4", handlers.Algerie4)
+
 	http.HandleFunc("/hoth", handlers.Hoth)
 	http.HandleFunc("/corruscant", handlers.Corruscant)
 	http.HandleFunc("/korriban", handlers.Korriban)
 	http.HandleFunc("/mustafar", handlers.Mustafar)
 
 	http.HandleFunc("/hothvideo", handlers.HothVideo)
+	http.HandleFunc("/corruscantvideo", handlers.CorruscantVideo)
+	http.HandleFunc("/korribanvideo", handlers.KorribanVideo)
+	http.HandleFunc("/mustafarvideo", handlers.MustafarVideo)
 
 
 	fmt.Println("(htpp://localhost:8877) - Server started on port ", appConfig.Port)

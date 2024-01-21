@@ -1,0 +1,17 @@
+{{ template "base" . }}
+
+{{ define "content" }}
+
+    <body id="hothVideoBody">
+
+        <script src="assets/js/video.js"></script>
+        
+        <video id="video" autoplay muted onended="videoendMustafar()">
+            <source src="assets/images/hypersapce_jump.mp4">
+        </video>
+
+    </body>
+
+
+
+{{ end }}

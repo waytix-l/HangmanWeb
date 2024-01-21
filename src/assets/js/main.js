@@ -10,24 +10,8 @@ const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: false });
 renderer.setClearColor(0x000000, 1);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-//document.getElementById("containerPlanets").appendChild(renderer.domElement);
-
-/*const texture = new THREE.TextureLoader.load("../images/stars.png");
-var backgroundMesh = new THREE.Mesh(
-    new THREE.PlaneGeometry(2, 2, 0),
-    new THREE.MeshBasicMaterial({
-        map: texture
-    }));
-
-backgroundMesh .material.depthTest = false;
-backgroundMesh .material.depthWrite = false;
-
-backgroundMesh.position.z = 0;
-scene.add(backgroundMesh);*/
-
 const loader = new GLTFLoader();
 const loader_texture = new THREE.ImageLoader();
-
 
 
 let hoth;
@@ -60,13 +44,14 @@ loader.load("assets/3dModels/mustafar/mustafar.gltf", function (gltf) {
     scene.add(mustafar)
 });
 
-/*
+
 loader.load("assets/3dModels/x-wing/x-wing.gltf", function (gltf) {
     xwing = gltf.scene
-    xwing.position.set(0, 1, 0)
+    xwing.position.set(0, -1, 0)
     xwing.rotation.y = Math.PI/2
+    xwing.scale.set(0.5, 0.5, 0.5)
     scene.add(xwing)
-})*/
+})
 
 camera.position.x = 0;
 camera.position.y = -0.5;
@@ -84,6 +69,7 @@ function animate() {
     corruscant.rotation.y += 0.002;
     korriban.rotation.y += 0.002;
     mustafar.rotation.y += 0.002;
+    xwing.rotation.y += 0.005;
 
     renderer.render(scene, camera);
 }

@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"bytes"
 	"fmt"
 	"net/http"
 	"path/filepath"
@@ -14,40 +13,65 @@ import (
 var h hangman.HangmanData
 
 func Home(w http.ResponseWriter, r *http.Request) {
-	h.RandomWord()
-	println(h.Word)
-	renderTemplate(w, "home", hangman.HangmanData{Word: h.Word})
+	h.HangmanInit()
+	renderTemplate(w, r, "home", nil)
 }
 
 func Contact(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "contact", nil)
+	renderTemplate(w, r, "contact", nil)
 }
-
-func About(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "about", nil)
+func Algerie1(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "algerie1", nil)
+}
+func Algerie2(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "algerie2", nil)
+}
+func Algerie3(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "algerie3", nil)
+}
+func Algerie4(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "algerie4", nil)
 }
 
 func Hoth(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "hoth", nil)
+	h.Gessed_letters = r.FormValue("letter")
+	fmt.Println(h.Gessed_letters)
+	h.Hangman()
+	renderTemplate(w, r, "hoth", hangman.HangmanData{Word: h.Word, Mot_secret: h.Mot_secret, ListMotSecret: h.ListMotSecret, Win: h.Win, Lost: h.Lost, Try :h.Try})
+}
+func HothVideo(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "hothVideo", nil)
 }
 
 func Corruscant(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "corruscant", nil)
+	h.Gessed_letters = r.FormValue("letter")
+	fmt.Println(h.Gessed_letters)
+	h.Hangman()
+	renderTemplate(w, r, "corruscant", hangman.HangmanData{Word: h.Word, Mot_secret: h.Mot_secret, ListMotSecret: h.ListMotSecret, Win: h.Win, Lost: h.Lost, Try :h.Try})
+}
+func CorruscantVideo(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "corruscantVideo", nil)
 }
 
 func Korriban(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "korriban", nil)
+	h.Gessed_letters = r.FormValue("letter")
+	fmt.Println(h.Gessed_letters)
+	h.Hangman()
+	renderTemplate(w, r, "korriban", hangman.HangmanData{Word: h.Word, Mot_secret: h.Mot_secret, ListMotSecret: h.ListMotSecret, Win: h.Win, Lost: h.Lost, Try :h.Try})
+}
+func KorribanVideo(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "korribanVideo", nil)
 }
 
 func Mustafar(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "mustafar", nil)
+	h.Gessed_letters = r.FormValue("letter")
+	fmt.Println(h.Gessed_letters)
+	h.Hangman()
+	renderTemplate(w, r, "mustafar", hangman.HangmanData{Word: h.Word, Mot_secret: h.Mot_secret, ListMotSecret: h.ListMotSecret, Win: h.Win, Lost: h.Lost, Try :h.Try})
 }
-
-
-func HothVideo(w http.ResponseWriter, r *http.Request) {
-	renderTemplate(w, "hothVideo", nil)
+func MustafarVideo(w http.ResponseWriter, r *http.Request) {
+	renderTemplate(w, r, "mustafarVideo", nil)
 }
-
 
 var appConfig *config.Config
 
@@ -55,7 +79,7 @@ func CreateTemplates(app *config.Config) {
 	appConfig = app
 }
 
-func renderTemplate(w http.ResponseWriter, tmplName string, data interface{}) {
+func renderTemplate(w http.ResponseWriter, r *http.Request, tmplName string, data interface{}) {
 	templateCache := appConfig.TemplateCache
 
 	tmpl, ok := templateCache[tmplName+".page.html"]
@@ -66,16 +90,13 @@ func renderTemplate(w http.ResponseWriter, tmplName string, data interface{}) {
 		return
 	}
 
-	buf := new(bytes.Buffer)
-	tmpl.Execute(buf, data)
-	buf.WriteTo(w)
+	tmpl.Execute(w, data)
 }
 
 func CreateTemplateCache() (map[string]*template.Template, error) {
 	cache := map[string]*template.Template{}
 
 	pages, err := filepath.Glob("assets/templates_HTML/*.page.html")
-	fmt.Println(pages)
 
 	if err != nil {
 		return cache, err

@@ -1,0 +1,17 @@
+{{ template "base" . }}
+
+{{ define "content" }}
+
+    <body id="korribanVideoBody">
+
+        <script src="assets/js/video.js"></script>
+        
+        <video id="video" autoplay muted onended="videoendKorriban()">
+            <source src="assets/images/hypersapce_jump.mp4">
+        </video>
+
+    </body>
+
+
+
+{{ end }}

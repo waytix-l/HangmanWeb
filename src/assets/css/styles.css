@@ -1,14 +1,29 @@
 
-
 @font-face {
     font-family: "star-wars";
     src: url("../images/Aurebesh.otf");
 }
 
+@font-face {
+    font-family: "star-wars-title";
+    src: url("../images/SfDistantGalaxyOutlineItalic-4yA4.ttf");
+}
 
 h1 {
+    position: absolute;
     font-size: large;
     color: white;
+    font-family: "star-wars-title";
+    z-index: 3;
+}
+
+.title {
+    top: 70px;
+    left: 400px;
+    font-size: 80px;
+    transition: 1s;
+    color: #f4f4ff;
+    text-shadow: #ffffff 1px 0 10px;
 }
 
 p {
@@ -16,8 +31,19 @@ p {
     z-index: 2;
 }
 
-.mot {
-    color: white;
+.win {
+    position: relative;
+    top: 130px;
+    left: 350px;
+
+    font-size: 20px;
+}
+
+.try {
+    position: relative;
+    top: -300px;
+    left: 350px;
+    font-size: 20px;
 }
 
 #canvas {
@@ -45,39 +71,315 @@ p {
 #hoth.card {
     top: 270px;
     left: 45px;
+    filter: drop-shadow(0 0 0.75rem #4444dd);
 }
 
 #coruscant.card {
     top: 270px;
     left: 410px;
+    filter: drop-shadow(0 0 0.75rem #de8218);
 }
 
 #korriban.card {
     top: 270px;
     left: 775px;
+    filter: drop-shadow(0 0 0.75rem #e6b230);
 }
 
 #mustafar.card {
     top: 270px;
     left: 1140px;
+    filter: drop-shadow(0 0 0.75rem #c02424);
 }
 
-.test {
-    position: absolute;
-    top: 480px;
-    left: 317px;
-    letter-spacing: 5px;
-    z-index: 3;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
-    font-family: "star-wars";
-    opacity: 1;
-}
 
+/* Hoth Page */
 
 #hothBody {
+    position: fixed;
+    background-image: url("../images/mountain-landscape.jpg") ;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-size: 125%;
+}
+#hothVideoBody {
     position: absolute;
-    background-image: url("../images/mountain-landscape.jpg");
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+.HothBackgroundUI {
+    position: absolute;
+    left: 500px;
+    top: 30px;
+
+    width: 800px;
+    height: 900px;
+
+    background: rgba(12, 3, 77, 0.25);
+    border-radius: 15px;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border: 1px solid rgba(12, 3, 77, 0.5);
+}
+
+
+.keyboardHoth {
+    position: relative;
+    left: 20px;
+    top: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonHoth {
+    transition: 0.3s;
+    width: 60px;
+    height: 60px;
+    background-color: #9292ff59;
+    border: 1px solid #d2d2ff00 ;
+    border-radius: 5px;
+    margin: 0.5em;
+    font-size: 20px;
+}
+.buttonHoth:hover,
+.buttonHoth:focus {
+    border: 1px solid #d2d2ff ;
+    box-shadow: 0 3px 10px #d2d2ff ;
+    transform: translateY(-0.25em);
+    color: #d2d2ff ;
+}
+
+
+#deco.buttonHoth {
+    position: relative;
+    top: 120px;
+    left: 701px;
+}
+#main_menu.buttonHoth {
+    position: relative;
+    width: 270px;
+    top: 300px;
+    left: 165px;
+}
+
+
+.mot_secret_hoth {
+    position: relative;
+    letter-spacing: 5px;
+    top: 20px;
+    left: 275px;
+    font-size: 50px;
+}
+
+.lost {
+    position: relative;
+    top: 130px;
+    left: 230px;
+
+    font-size: 20px;
+}
+
+
+
+/* Corruscant Page */
+
+#corruscantBody {
+    position: absolute;
+    background-image: url("../images/corruscant_landscape2.jpg");
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+}
+#corruscantVideoBody {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.CorruscantBackgroundUI {
+    position: absolute;
+    left: 500px;
+    top: 30px;
+
+    width: 800px;
+    height: 900px;
+
+    background: rgba(12, 3, 77, 0.25);
+    border-radius: 15px;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border: 1px solid rgba(12, 3, 77, 0.5);
+}
+
+.keyboardCorruscant {
+    position: relative;
+    left: 20px;
+    top: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonCorruscant {
+    transition: 0.3s;
+    width: 60px;
+    height: 60px;
+    background-color: #9292ff59;
+    border: 1px solid #d2d2ff00 ;
+    border-radius: 5px;
+    margin: 0.5em;
+    font-size: 20px;
+}
+.buttonCorruscant:hover,
+.buttonCorruscant:focus {
+    border: 1px solid #d2d2ff ;
+    box-shadow: 0 3px 10px #f2f2ff ;
+    transform: translateY(-0.25em);
+    color: #d2d2ff ;
+}
+
+
+#deco.buttonCorruscant {
+    position: relative;
+    top: 120px;
+    left: 701px;
+}
+#main_menu.buttonCorruscant {
+    position: relative;
+    width: 270px;
+    top: 300px;
+    left: 165px;
+}
+
+.mot_secret_corruscant {
+    position: relative;
+    letter-spacing: 5px;
+    top: 20px;
+    left: 275px;
+    font-size: 50px;
+}
+
+.lost {
+    position: relative;
+    top: 130px;
+    left: 230px;
+
+    font-size: 20px;
+}
+
+
+
+/* Korriban Page */
+
+#korribanBody {
+    position: absolute;
+    background-image: url("../images/korriban_landscape.jpg");
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+}
+#korribanVideoBody {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.KorribanBackgroundUI {
+    position: absolute;
+    left: 500px;
+    top: 30px;
+
+    width: 800px;
+    height: 900px;
+
+    background: rgba(86, 54, 3, 0.25);
+    border-radius: 15px;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border: 1px solid rgba(71, 38, 3, 0.5);
+}
+
+.keyboardKorriban {
+    position: relative;
+    left: 20px;
+    top: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonKorriban {
+    transition: 0.3s;
+    width: 60px;
+    height: 60px;
+    background-color: #ffd99259;
+    border: 1px solid #d2d2ff00 ;
+    border-radius: 5px;
+    margin: 0.5em;
+    font-size: 20px;
+}
+.buttonKorriban:hover,
+.buttonKorriban:focus {
+    border: 1px solid #d2d2ff ;
+    box-shadow: 0 3px 10px #f2f2ff ;
+    transform: translateY(-0.25em);
+    color: #d2d2ff ;
+}
+
+
+#deco.buttonKorriban {
+    position: relative;
+    top: 120px;
+    left: 701px;
+}
+#main_menu.buttonKorriban {
+    position: relative;
+    width: 270px;
+    top: 300px;
+    left: 165px;
+}
+
+
+.mot_secret_korriban {
+    position: relative;
+    letter-spacing: 5px;
+    top: 20px;
+    left: 275px;
+    font-size: 50px;
+}
+
+.lost {
+    position: relative;
+    top: 130px;
+    left: 230px;
+
+    font-size: 20px;
+}
+
+
+/* Mustafar Page */
+
+
+#mustafarBody {
+    position: absolute;
+    background-image: url("../images/vador_castle.jpg");
     height: 100%;
     width: 100%;
     margin: 0;
@@ -85,10 +387,93 @@ p {
     background-size: cover;
 }
 
-#hothVideoBody {
+#MustafarVideoBody {
     position: absolute;
     height: 100%;
     width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.MustafarBackgroundUI {
+    position: absolute;
+    left: 500px;
+    top: 30px;
+
+    width: 800px;
+    height: 900px;
+
+    background: rgba(86, 3, 3, 0.25);
+    border-radius: 15px;
+    box-shadow: 7px 7px 5px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    border: 1px solid rgba(71, 3, 3, 0.5);
+}
+
+.keyboardMustafar {
+    position: relative;
+    left: 20px;
+    top: 200px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonMustafar {
+    transition: 0.3s;
+    width: 60px;
+    height: 60px;
+    background-color: #ff929259;
+    border: 1px solid #ffd9d200 ;
+    border-radius: 5px;
+    margin: 0.5em;
+    font-size: 20px;
+}
+.buttonMustafar:hover,
+.buttonMustafar:focus {
+    border: 1px solid #d2d2ff ;
+    box-shadow: 0 3px 10px #f2f2ff ;
+    transform: translateY(-0.25em);
+    color: #d2d2ff ;
+}
+
+
+#deco.buttonMustafar {
+    position: relative;
+    top: 120px;
+    left: 701px;
+}
+#main_menu.buttonMustafar {
+    position: relative;
+    width: 270px;
+    top: 300px;
+    left: 165px;
+}
+
+.mot_secret_mustafar {
+    position: relative;
+    letter-spacing: 5px;
+    top: 20px;
+    left: 275px;
+    font-size: 50px;
+}
+
+.lost {
+    position: relative;
+    top: 130px;
+    left: 230px;
+
+    font-size: 20px;
+}
+
+
+
+.Algerie {
+    background-image: url("../images/Flag_of_Algeria.png");
+    height: 100vh;
+    width: 100%;
+    background-position: 0 -150px;
+    background-size:cover;
     margin: 0;
     padding: 0;
 }
