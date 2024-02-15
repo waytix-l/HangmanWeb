@@ -11,8 +11,6 @@ renderer.setClearColor(0x000000, 1);
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 const loader = new GLTFLoader();
-const loader_texture = new THREE.ImageLoader();
-
 
 let hoth;
 let corruscant;
@@ -43,7 +41,6 @@ loader.load("assets/3dModels/mustafar/mustafar.gltf", function (gltf) {
     mustafar.position.set(3.5, 0, 0)
     scene.add(mustafar)
 });
-
 
 loader.load("assets/3dModels/x-wing/x-wing.gltf", function (gltf) {
     xwing = gltf.scene

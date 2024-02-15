@@ -20,10 +20,6 @@ func (h *HangmanData) RandomWord() {
 
 	h.Word = lines[h.Random_number]
 	h.Word_Table = strings.Split(h.Word, "")
-
-	// for i := 0; i < len(h.Word); i++ {
-	// 	h.Mot_secret = append(h.Mot_secret, "_")
-	// }
 }
 
 func (h *HangmanData) SecretWord() {
